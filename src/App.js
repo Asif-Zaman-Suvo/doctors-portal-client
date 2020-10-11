@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -8,9 +7,27 @@ import {
   
 } from "react-router-dom";
 import Home from './Components/Home/Home/Home';
+import Booking from './Components/AppoinmentBook/Booking/Booking';
+import Login from './Components/Login/Login';
+import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
+
+export const UserContext = createContext();
 
 function App() {
+
+  const [loggedInUser, setLoggedInUser] = useState({
+
+    isSignedIn: false,
+    name: '',
+    email: '',
+    password: '',
+    message: '',
+
+  })
+
   return (
+
+    <UserContext.Provider value={[loggedInUser,setLoggedInUser]}>
     <Router>
       <Switch>
         <Route exact path="/">
@@ -18,9 +35,25 @@ function App() {
 
         </Route>
 
+        <Route path="/appointmentBook">
+          <Booking></Booking>
+
+        </Route>
+
+        <Route path="/dashboard/appointmentList">
+          <Dashboard></Dashboard>
+
+        </Route>
+
+        <Route path="/login">
+          <Login></Login>
+
+        </Route>
+
       </Switch>
       
     </Router>
+    </UserContext.Provider>
   );
 }
 
