@@ -40,11 +40,11 @@ const Dashboard = () => {
     return (
         <section>
             <div style={containerStyle} className="container-fluid row">
-            <div className="col-md-2">
+            <div className="col-md-2 col-sm-6 col-12">
                     <Sidebar></Sidebar>
                 </div>
 
-                <div className='col-md-5'>
+                <div className='col-md-5 col-sm-12 col-12 d-flex justify-content-center'>
                 <Calendar
                     onChange={handleDateChange}
                     value={new Date()}
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
                 </div>
 
-                <div className='col-md-5'>
+                <div className='col-md-5 col-sm-12 col-12'>
                     <AppointmentByDate appointments={appointments}></AppointmentByDate>
                 </div>
               
